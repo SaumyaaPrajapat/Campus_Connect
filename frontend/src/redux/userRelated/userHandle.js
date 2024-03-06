@@ -128,7 +128,6 @@ export const addStuff = (fields, address) => async (dispatch) => {
         headers: { "Content-Type": "application/json" },
       }
     );
-
     if (result.data.message) {
       dispatch(authFailed(result.data.message));
     } else {
