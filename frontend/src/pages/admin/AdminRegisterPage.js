@@ -18,7 +18,7 @@ import {
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import bg from "../../assets/bg.png";
-import { LightPurpleButton } from "../../components/buttonStyles";
+import { DarkBlueButton } from "../../components/buttonStyles";
 import { registerUser } from "../../redux/userRelated/userHandle";
 import styled from "styled-components";
 import Popup from "../../components/Popup";
@@ -185,7 +185,7 @@ const AdminRegisterPage = () => {
                   label="Remember me"
                 />
               </Grid>
-              <LightPurpleButton
+              <DarkBlueButton
                 type="submit"
                 fullWidth
                 variant="contained"
@@ -196,7 +196,7 @@ const AdminRegisterPage = () => {
                 ) : (
                   "Register"
                 )}
-              </LightPurpleButton>
+              </DarkBlueButton>
               <Grid container>
                 <Grid>Already have an account?</Grid>
                 <Grid item sx={{ ml: 2 }}>
@@ -237,5 +237,5 @@ export default AdminRegisterPage;
 const StyledLink = styled(Link)`
   margin-top: 9px;
   text-decoration: none;
-  color: #7f56da;
+  color: #0008c5;
 `;

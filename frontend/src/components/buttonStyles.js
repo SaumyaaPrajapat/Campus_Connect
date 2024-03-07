@@ -59,12 +59,12 @@ export const PurpleButton = styled(Button)`
   }
 `;
 
-export const LightPurpleButton = styled(Button)`
+export const DarkBlueButton = styled(Button)`
   && {
-    background-color: #260796;
+    background-color: #000693;
     color: #fff;
     &:hover {
-      background-color: #7a1ccb;
+      background-color: #07005b;
     }
   }
 `;
