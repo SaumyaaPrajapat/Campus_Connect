@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Container, Grid, Box, Button } from "@mui/material";
 import styled from "styled-components";
 import Students from "../assets/homepage.png";
-import { LightPurpleButton } from "../components/buttonStyles";
+import { DarkBlueButton } from "../components/buttonStyles";
 import { keyframes } from "styled-components";
 const textclip = keyframes`
   to {
@@ -53,13 +53,13 @@ const Homepage = () => {
             </StyledText>
             <StyledBox>
               <StyledLink to="/choose">
-                <LightPurpleButton variant="contained" fullWidth>
+                <DarkBlueButton variant="contained" fullWidth>
                   Login
-                </LightPurpleButton>
+                </DarkBlueButton>
               </StyledLink>
               <StyledText>
                 Don't have an account?{" "}
-                <Link to="/Adminregister" style={{ color: "#550080" }}>
+                <Link to="/Adminregister" style={{ color: "#0008C5" }}>
                   Sign up
                 </Link>
               </StyledText>
@@ -92,16 +92,6 @@ const StyledBox = styled(Box)`
   justify-content: center;
   gap: 16px;
   padding: 24px;
-`;
-
-const StyledTitle = styled.h1`
-  font-size: 3rem;
-  color: #252525;
-  /* font-family: "Manrope"; */
-  font-weight: bold;
-  padding-top: 30px;
-  letter-spacing: normal;
-  line-height: normal;
 `;
 
 const StyledText = styled.p`

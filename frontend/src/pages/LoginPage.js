@@ -19,7 +19,7 @@ import {
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import bg from "../assets/bg.png";
-import { LightPurpleButton } from "../components/buttonStyles";
+import { DarkBlueButton } from "../components/buttonStyles";
 import styled from "styled-components";
 import { loginUser } from "../redux/userRelated/userHandle";
 import Popup from "../components/Popup";
@@ -232,26 +232,18 @@ const LoginPage = ({ role }) => {
                 />
                 <StyledLink href="#">Forgot password?</StyledLink>
               </Grid>
-              <LightPurpleButton
+              <DarkBlueButton
                 type="submit"
                 fullWidth
                 variant="contained"
-                sx={{ mt: 3 }}
+                sx={{ mt: 3, mb: 3 }}
               >
                 {loader ? (
                   <CircularProgress size={24} color="inherit" />
                 ) : (
                   "Login"
                 )}
-              </LightPurpleButton>
-              <Button
-                fullWidth
-                onClick={guestModeHandler}
-                variant="outlined"
-                sx={{ mt: 2, mb: 3, color: "#7f56da", borderColor: "#7f56da" }}
-              >
-                Login as Guest
-              </Button>
+              </DarkBlueButton>
               {role === "Admin" && (
                 <Grid container>
                   <Grid>Don't have an account?</Grid>
@@ -301,5 +293,5 @@ export default LoginPage;
 const StyledLink = styled(Link)`
   margin-top: 9px;
   text-decoration: none;
-  color: #7f56da;
+  color: #0008c5;
 `;
