@@ -6,7 +6,7 @@ const dotenv = require("dotenv")
 const app = express()
 const Routes = require("./routes/route.js")
 
-const PORT = process.env.PORT || 5000
+//const PORT = process.env.PORT || 5000
 
 dotenv.config();
 
@@ -27,6 +27,6 @@ mongoose
 const baseUrl = "https://campus-connect-backend-sa.vercel.app";
 app.use(baseUrl, Routes);
 
-app.listen(PORT, () => {
-    console.log(`Server started at port no. ${PORT}`)
-})
+app.listen(process.env.PORT, () => {
+  console.log(`Server started at ${baseUrl}`);
+});
