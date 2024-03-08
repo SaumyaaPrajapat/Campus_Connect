@@ -12,11 +12,12 @@ import {
     getSubDetailsRequest
 } from './sclassSlice';
 
+const REACT_APP_BASE_URL = "https://campus-connect-backend-sa.vercel.app/";
 export const getAllSclasses = (id, address) => async (dispatch) => {
     dispatch(getRequest());
 
     try {
-        const result = await axios.get(`${process.env.REACT_APP_BASE_URL}/${address}List/${id}`);
+        const result = await axios.get(`${REACT_APP_BASE_URL}/${address}List/${id}`);
         if (result.data.message) {
             dispatch(getFailedTwo(result.data.message));
         } else {
@@ -31,7 +32,7 @@ export const getClassStudents = (id) => async (dispatch) => {
     dispatch(getRequest());
 
     try {
-        const result = await axios.get(`${process.env.REACT_APP_BASE_URL}/Sclass/Students/${id}`);
+        const result = await axios.get(`${REACT_APP_BASE_URL}/Sclass/Students/${id}`);
         if (result.data.message) {
             dispatch(getFailedTwo(result.data.message));
         } else {
@@ -46,7 +47,7 @@ export const getClassDetails = (id, address) => async (dispatch) => {
     dispatch(getRequest());
 
     try {
-        const result = await axios.get(`${process.env.REACT_APP_BASE_URL}/${address}/${id}`);
+        const result = await axios.get(`${REACT_APP_BASE_URL}/${address}/${id}`);
         if (result.data) {
             dispatch(detailsSuccess(result.data));
         }
@@ -59,7 +60,7 @@ export const getSubjectList = (id, address) => async (dispatch) => {
     dispatch(getRequest());
 
     try {
-        const result = await axios.get(`${process.env.REACT_APP_BASE_URL}/${address}/${id}`);
+        const result = await axios.get(`${REACT_APP_BASE_URL}/${address}/${id}`);
         if (result.data.message) {
             dispatch(getFailed(result.data.message));
         } else {
@@ -74,7 +75,7 @@ export const getTeacherFreeClassSubjects = (id) => async (dispatch) => {
     dispatch(getRequest());
 
     try {
-        const result = await axios.get(`${process.env.REACT_APP_BASE_URL}/FreeSubjectList/${id}`);
+        const result = await axios.get(`${REACT_APP_BASE_URL}/FreeSubjectList/${id}`);
         if (result.data.message) {
             dispatch(getFailed(result.data.message));
         } else {
@@ -89,7 +90,7 @@ export const getSubjectDetails = (id, address) => async (dispatch) => {
     dispatch(getSubDetailsRequest());
 
     try {
-        const result = await axios.get(`${process.env.REACT_APP_BASE_URL}/${address}/${id}`);
+        const result = await axios.get(`${REACT_APP_BASE_URL}/${address}/${id}`);
         if (result.data) {
             dispatch(getSubDetailsSuccess(result.data));
         }
