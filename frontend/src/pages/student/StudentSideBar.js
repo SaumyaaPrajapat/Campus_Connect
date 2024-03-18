@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useState } from 'react'; 
 import { Divider, ListItemButton, ListItemIcon, ListItemText, ListSubheader } from '@mui/material';
 import { Link, useLocation } from 'react-router-dom';
 
@@ -11,6 +12,7 @@ import AssignmentIcon from '@mui/icons-material/Assignment';
 
 const StudentSideBar = () => {
     const location = useLocation();
+    const [open, setOpen] = useState(false);
     return (
         <>
             <React.Fragment>
@@ -55,6 +57,9 @@ const StudentSideBar = () => {
                         <ExitToAppIcon color={location.pathname.startsWith("/logout") ? 'primary' : 'inherit'} />
                     </ListItemIcon>
                     <ListItemText primary="Logout" />
+                </ListItemButton>
+                <ListItemButton onClick={() => setOpen(!open)}>
+                    <ListItemText primary={open ? "Close Sidebar" : "Open Sidebar"} />
                 </ListItemButton>
             </React.Fragment>
         </>
