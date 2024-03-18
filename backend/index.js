@@ -27,8 +27,4 @@ app.use("/", Routes);
 
 app.listen(PORT, () => {
   console.log(`Server started at port no. ${PORT}`);
-<<<<<<< HEAD
 });
-=======
-});
->>>>>>> 046664b35c8e9412dad744b70bc54d030bdba39c
