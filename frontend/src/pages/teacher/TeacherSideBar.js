@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useState } from 'react'; 
 import { Divider, ListItemButton, ListItemIcon, ListItemText, ListSubheader } from '@mui/material';
 import { Link, useLocation } from 'react-router-dom';
 
@@ -14,6 +15,7 @@ const TeacherSideBar = () => {
     const sclassName = currentUser.teachSclass
 
     const location = useLocation();
+    const [open, setOpen] = useState(false); 
     return (
         <>
             <React.Fragment>
@@ -52,6 +54,9 @@ const TeacherSideBar = () => {
                         <ExitToAppIcon color={location.pathname.startsWith("/logout") ? 'primary' : 'inherit'} />
                     </ListItemIcon>
                     <ListItemText primary="Logout" />
+                </ListItemButton>
+                <ListItemButton onClick={() => setOpen(!open)}>
+                    <ListItemText primary={open ? "Close Sidebar" : "Open Sidebar"} />
                 </ListItemButton>
             </React.Fragment>
         </>

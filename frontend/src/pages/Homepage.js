@@ -67,6 +67,8 @@ const Homepage = () => {
           </StyledPaper>
         </Grid>
       </Grid>
+      <Footer>&copy; 2024 Campus Connect. All rights reserved.</Footer>
+
     </StyledContainer>
   );
 };
@@ -83,6 +85,17 @@ const StyledContainer = styled(Container)`
 const StyledPaper = styled.div`
   padding: 24px;
   height: 100vh;
+`;
+const Footer = styled.footer`
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  background-color: #FFFF;
+  color: black;
+  text-align: center;
+  padding: 10px 0;
 `;
 
 const StyledBox = styled(Box)`

@@ -7,7 +7,7 @@ import {
     stuffDone
 } from './studentSlice';
 
-const REACT_APP_BASE_URL = "https://campus-connect-backend-sa.vercel.app/";
+const REACT_APP_BASE_URL = " http://localhost:5000";
 export const getAllStudents = (id) => async (dispatch) => {
     dispatch(getRequest());
 

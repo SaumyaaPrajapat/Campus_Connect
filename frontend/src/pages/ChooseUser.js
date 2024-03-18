@@ -78,7 +78,7 @@ const ChooseUser = ({ visitor }) => {
   return (
     <StyledContainer>
       <Container>
-        <Grid container spacing={2} justifyContent="center">
+        <StyledGrid container spacing={2} justifyContent="center">
           <Grid item xs={12} sm={6} md={4}>
             <div onClick={() => navigateHandler("Admin")}>
               <StyledPaper elevation={3}>
@@ -114,7 +114,7 @@ const ChooseUser = ({ visitor }) => {
               </div>
             </StyledPaper>
           </Grid>
-        </Grid>
+        </StyledGrid>
       </Container>
       <Backdrop
         sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
@@ -130,15 +130,16 @@ const ChooseUser = ({ visitor }) => {
       />
     </StyledContainer>
   );
-};
+}
 
 export default ChooseUser;
 
 const StyledContainer = styled.div`
-  background: linear-gradient(to bottom, #4b1d70, #19118b);
-  height: 120vh;
+    background: linear-gradient(to bottom, #4b1d70, #19118b);
+  min-height: 100vh; /* Change to min-height for responsiveness */
   display: flex;
   justify-content: center;
+  align-items: center; /* Center items vertically */
   padding: 2rem;
 `;
 
@@ -154,7 +155,9 @@ const StyledPaper = styled(Paper)`
     color: white;
   }
 `;
-
+const StyledGrid = styled(Grid)`
+  max-width: 1500px; /* Adjust max-width according to your design */
+`;
 const StyledTypography = styled.h2`
   margin-bottom: 10px;
 `;
