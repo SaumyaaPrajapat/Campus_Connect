@@ -98,7 +98,8 @@ const ChooseUser = ({ visitor }) => {
                   <School fontSize="large" />
                 </Box>
                 <StyledTypography>Student</StyledTypography>
-                Login as a student to explore course materials and assignments.
+                Login as a student to explore course materials, assignments, and
+                resources.
               </div>
             </StyledPaper>
           </Grid>
@@ -109,7 +110,7 @@ const ChooseUser = ({ visitor }) => {
                   <Group fontSize="large" />
                 </Box>
                 <StyledTypography>Teacher</StyledTypography>
-                Login as a teacher to create courses, assignments, and track
+                Login as a Teacher to create courses, assignments, and track
                 student progress.
               </div>
             </StyledPaper>
@@ -130,12 +131,12 @@ const ChooseUser = ({ visitor }) => {
       />
     </StyledContainer>
   );
-}
+};
 
 export default ChooseUser;
 
 const StyledContainer = styled.div`
-    background: linear-gradient(to bottom, #4b1d70, #19118b);
+  background: linear-gradient(to bottom, #4b1d70, #19118b);
   min-height: 100vh; /* Change to min-height for responsiveness */
   display: flex;
   justify-content: center;
