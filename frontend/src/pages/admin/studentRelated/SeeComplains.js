@@ -52,9 +52,13 @@ const SeeComplains = () => {
         :
         <>
           {response ?
-            <Box sx={{ display: 'flex', justifyContent: 'flex-end', marginTop: '16px' }}>
-              No Complains Right Now
-            </Box>
+     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+     <Box sx={{ display: 'flex', justifyContent: 'center', marginTop: '10px', textAlign: 'center',fontWeight:'bold',fontSize:'20px' }}>
+       No Complains Right Now
+     </Box>
+   </div>
+  
+     
             :
             <Paper sx={{ width: '100%', overflow: 'hidden' }}>
               {Array.isArray(complainsList) && complainsList.length > 0 &&
@@ -67,5 +71,8 @@ const SeeComplains = () => {
     </>
   );
 };
+
+
+
 
 export default SeeComplains;

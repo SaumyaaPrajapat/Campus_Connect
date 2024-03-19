@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { addStuff } from '../../../redux/userRelated/userHandle';
 import { underControl } from '../../../redux/userRelated/userSlice';
-import { BlueButton } from "../../../components/buttonStyles";
+import { BlueButton,ButtonContainer } from "../../../components/buttonStyles";
 import Popup from "../../../components/Popup";
 import Classroom from "../../../assets/classroom.png";
 import styled from "styled-components";
@@ -78,6 +78,7 @@ const AddClass = () => {
                                 }}
                                 required
                             />
+                            
                             <BlueButton
                                 fullWidth
                                 size="large"

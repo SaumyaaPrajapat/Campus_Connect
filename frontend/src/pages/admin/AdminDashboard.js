@@ -4,6 +4,7 @@ import {
   Box,
   Toolbar,
   List,
+  Button,
   Typography,
   Divider,
   IconButton,
@@ -42,12 +43,21 @@ import ClassDetails from "./classRelated/ClassDetails";
 import ShowClasses from "./classRelated/ShowClasses";
 import AccountMenu from "../../components/AccountMenu";
 
+import nodata from "../../assets/nodata.png";
 const AdminDashboard = () => {
   const [open, setOpen] = useState(false);
+  const [hasData, setHasData] = useState(false); 
   const toggleDrawer = () => {
     setOpen(!open);
   };
+  const addData = () => {
+    setHasData(true); 
+  };
 
+
+  const removeData = () => {
+    setHasData(false); 
+  };
   return (
     <>
       <Box sx={{ display: "flex" }}>
@@ -57,7 +67,9 @@ const AdminDashboard = () => {
           position="absolute"
           sx={{ backgroundColor: "darkblue" }}
         >
+                  
           <Toolbar sx={{ pr: "24px" }}>
+            
             <IconButton
               edge="start"
               color="inherit"
@@ -81,6 +93,7 @@ const AdminDashboard = () => {
             </Typography>
             <AccountMenu />
           </Toolbar>
+       
         </AppBar>
         <Drawer
           variant="permanent"
@@ -88,6 +101,7 @@ const AdminDashboard = () => {
           sx={open ? styles.drawerStyled : styles.hideDrawer}
         >
           <Toolbar sx={styles.toolBarStyled}>
+ 
             <IconButton onClick={toggleDrawer}>
               <ChevronLeftIcon />
             </IconButton>
@@ -99,6 +113,7 @@ const AdminDashboard = () => {
         </Drawer>
         <Box component="main" sx={styles.boxStyled}>
           <Toolbar />
+          {hasData ? (
           <Routes>
             <Route path="/" element={<AdminHomePage />} />
             <Route path="*" element={<Navigate to="/" />} />
@@ -189,8 +204,21 @@ const AdminDashboard = () => {
 
             <Route path="/logout" element={<Logout />} />
           </Routes>
-        </Box>
+          ):(
+           <Box sx={{ textAlign: "center", mt: "80px" }}>
+           <img src={nodata} alt="No Data" />
+           <Typography variant="h5" component="div" mt={0.5}>
+             No Data Found
+           </Typography>
+           <Button onClick={addData} variant="contained" color="primary" mt={1}>
+             Add Data
+           </Button>
+         </Box>
+       )}
+     </Box>
+ 
       </Box>
+    
     </>
   );
 };
@@ -210,7 +238,7 @@ const styles = {
   toolBarStyled: {
     display: "flex",
     alignItems: "center",
-    justifyContent: "flex-end",
+     justifyContent: "flex-end",
     px: [1],
   },
   drawerStyled: {
