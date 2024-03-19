@@ -1,6 +1,13 @@
 import styled from "styled-components";
 import { Button } from "@mui/material";
 
+export const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  
+`;
 export const RedButton = styled(Button)`
   && {
     background-color: #f00;

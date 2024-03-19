@@ -63,7 +63,7 @@ const AddNotice = () => {
             value={date}
             onChange={(event) => setDate(event.target.value)}
             required />
-
+         
           <button className="registerButton" type="submit" disabled={loader}>
             {loader ? (
               <CircularProgress size={24} color="inherit" />
