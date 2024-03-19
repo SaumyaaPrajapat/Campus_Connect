@@ -1,87 +1,99 @@
-import { Container, Grid, Paper } from '@mui/material'
-import SeeNotice from '../../components/SeeNotice';
+import React, { useState } from "react";
+import { Container, Grid, Paper, Box, Typography } from "@mui/material";
+import SeeNotice from "../../components/SeeNotice";
 import Students from "../../assets/img1.png";
 import Classes from "../../assets/img2.png";
 import Teachers from "../../assets/img3.png";
 import Fees from "../../assets/img4.png";
-import styled from 'styled-components';
-import CountUp from 'react-countup';
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
-import { getAllSclasses } from '../../redux/sclassRelated/sclassHandle';
-import { getAllStudents } from '../../redux/studentRelated/studentHandle';
-import { getAllTeachers } from '../../redux/teacherRelated/teacherHandle';
+import styled from "styled-components";
+import CountUp from "react-countup";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { getAllSclasses } from "../../redux/sclassRelated/sclassHandle";
+import { getAllStudents } from "../../redux/studentRelated/studentHandle";
+import { getAllTeachers } from "../../redux/teacherRelated/teacherHandle";
+import nodata from "../../assets/nodata.png";
 
 const AdminHomePage = () => {
-    const dispatch = useDispatch();
-    const { studentsList } = useSelector((state) => state.student);
-    const { sclassesList } = useSelector((state) => state.sclass);
-    const { teachersList } = useSelector((state) => state.teacher);
+  const dispatch = useDispatch();
+  const { studentsList } = useSelector((state) => state.student);
+  const { sclassesList } = useSelector((state) => state.sclass);
+  const { teachersList } = useSelector((state) => state.teacher);
 
-    const { currentUser } = useSelector(state => state.user)
+  const [hasData, setHasData] = useState(false);
+  const addData = () => {
+    setHasData(true);
+  };
 
-    const adminID = currentUser._id
+  const { currentUser } = useSelector((state) => state.user);
 
-    useEffect(() => {
-        dispatch(getAllStudents(adminID));
-        dispatch(getAllSclasses(adminID, "Sclass"));
-        dispatch(getAllTeachers(adminID));
-    }, [adminID, dispatch]);
+  const adminID = currentUser._id;
 
-    const numberOfStudents = studentsList && studentsList.length;
-    const numberOfClasses = sclassesList && sclassesList.length;
-    const numberOfTeachers = teachersList && teachersList.length;
+  useEffect(() => {
+    dispatch(getAllStudents(adminID));
+    dispatch(getAllSclasses(adminID, "Sclass"));
+    dispatch(getAllTeachers(adminID));
+  }, [adminID, dispatch]);
 
-    return (
-        <>
-            <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
-                <Grid container spacing={3}>
-                    <Grid item xs={12} md={3} lg={3}>
-                        <StyledPaper>
-                            <img src={Students} alt="Students" />
-                            <Title>
-                                Total Students
-                            </Title>
-                            <Data start={0} end={numberOfStudents} duration={2.5} />
-                        </StyledPaper>
-                    </Grid>
-                    <Grid item xs={12} md={3} lg={3}>
-                        <StyledPaper>
-                            <img src={Classes} alt="Classes" />
-                            <Title>
-                                Total Classes
-                            </Title>
-                            <Data start={0} end={numberOfClasses} duration={5} />
-                        </StyledPaper>
-                    </Grid>
-                    <Grid item xs={12} md={3} lg={3}>
-                        <StyledPaper>
-                            <img src={Teachers} alt="Teachers" />
-                            <Title>
-                                Total Teachers
-                            </Title>
-                            <Data start={0} end={numberOfTeachers} duration={2.5} />
-                        </StyledPaper>
-                    </Grid>
-                    <Grid item xs={12} md={3} lg={3}>
-                        <StyledPaper>
-                            <img src={Fees} alt="Fees" />
-                            <Title>
-                                Fees Collection
-                            </Title>
-                            <Data start={0} end={23000} duration={2.5} prefix="$" />                        </StyledPaper>
-                    </Grid>
-                    <Grid item xs={12} md={12} lg={12}>
-                        <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
-                            <SeeNotice />
-                        </Paper>
-                    </Grid>
-                </Grid>
-            </Container>
-        </>
-    );
+  const numberOfStudents = studentsList && studentsList.length;
+  const numberOfClasses = sclassesList && sclassesList.length;
+  const numberOfTeachers = teachersList && teachersList.length;
+
+  return (
+    <>
+      <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
+        <Grid container spacing={3}>
+          <Grid item xs={12} md={3} lg={3}>
+            <StyledPaper>
+              <img src={Students} alt="Students" />
+              <Title>Total Students</Title>
+              <Data start={0} end={numberOfStudents} duration={2.5} />
+            </StyledPaper>
+          </Grid>
+          <Grid item xs={12} md={3} lg={3}>
+            <StyledPaper>
+              <img src={Classes} alt="Classes" />
+              <Title>Total Classes</Title>
+              <Data start={0} end={numberOfClasses} duration={5} />
+            </StyledPaper>
+          </Grid>
+          <Grid item xs={12} md={3} lg={3}>
+            <StyledPaper>
+              <img src={Teachers} alt="Teachers" />
+              <Title>Total Teachers</Title>
+              <Data start={0} end={numberOfTeachers} duration={2.5} />
+            </StyledPaper>
+          </Grid>
+          <Grid item xs={12} md={3} lg={3}>
+            <StyledPaper>
+              <img src={Fees} alt="Fees" />
+              <Title>Fees Collection</Title>
+              <Data start={0} end={23000} duration={2.5} prefix="$" />{" "}
+            </StyledPaper>
+          </Grid>
+          <Grid item xs={12} md={12} lg={12}>
+            <Paper sx={{ p: 2, display: "flex", flexDirection: "column" }}>
+              {hasData ? (
+                <SeeNotice />
+              ) : (
+                <Box sx={{ textAlign: "center", mt: "40px" }}>
+                  <img
+                    src={nodata}
+                    alt="No Data"
+                    style={{ maxWidth: "100%", maxHeight: "225px" }}
+                  />
+                  <Typography variant="h5" component="div" mt={0.5}>
+                    No Notice found
+                  </Typography>
+                </Box>
+              )}
+            </Paper>
+          </Grid>
+        </Grid>
+      </Container>
+    </>
+  );
 };
-
 
 const StyledPaper = styled(Paper)`
   padding: 16px;
@@ -98,8 +110,8 @@ const Title = styled.p`
 `;
 
 const Data = styled(CountUp)`
-  font-size: calc(1.3rem + .6vw);
+  font-size: calc(1.3rem + 0.6vw);
   color: green;
 `;
 
-export default AdminHomePage
+export default AdminHomePage;
