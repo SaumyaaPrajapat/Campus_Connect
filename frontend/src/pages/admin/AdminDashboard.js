@@ -43,7 +43,6 @@ import ClassDetails from "./classRelated/ClassDetails";
 import ShowClasses from "./classRelated/ShowClasses";
 import AccountMenu from "../../components/AccountMenu";
 
-import nodata from "../../assets/nodata.png";
 const AdminDashboard = () => {
   const [open, setOpen] = useState(false);
   const [hasData, setHasData] = useState(false);

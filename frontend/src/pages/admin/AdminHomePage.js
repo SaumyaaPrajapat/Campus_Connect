@@ -12,7 +12,7 @@ import { useEffect } from "react";
 import { getAllSclasses } from "../../redux/sclassRelated/sclassHandle";
 import { getAllStudents } from "../../redux/studentRelated/studentHandle";
 import { getAllTeachers } from "../../redux/teacherRelated/teacherHandle";
-import nodata from "../../assets/nodata.png";
+import addnotice from "../../assets/addnotice.jpg";
 
 const AdminHomePage = () => {
   const dispatch = useDispatch();
@@ -78,7 +78,7 @@ const AdminHomePage = () => {
               ) : (
                 <Box sx={{ textAlign: "center", mt: "40px" }}>
                   <img
-                    src={nodata}
+                    src={addnotice}
                     alt="No Data"
                     style={{ maxWidth: "100%", maxHeight: "225px" }}
                   />
