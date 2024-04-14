@@ -217,7 +217,7 @@ const styles = {
   toolBarStyled: {
     display: "flex",
     alignItems: "center",
-    justifyContent: "flex-end",
+    justifyContent: "flex-start",
     px: [1],
   },
   drawerStyled: {
