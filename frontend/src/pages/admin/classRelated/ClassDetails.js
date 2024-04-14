@@ -3,14 +3,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom'
 import { getClassDetails, getClassStudents, getSubjectList } from "../../../redux/sclassRelated/sclassHandle";
 import { deleteUser } from '../../../redux/userRelated/userHandle';
+ 
+import { Button } from '@mui/material';
 import {
-    Box, Container, Typography, Tab, IconButton
+    Box, Container, Typography, Tab,
 } from '@mui/material';
 import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
 import { resetSubjects } from "../../../redux/sclassRelated/sclassSlice";
-import { BlueButton, GreenButton, PurpleButton } from "../../../components/buttonStyles";
+import { BlueButton, PurpleButton } from "../../../components/buttonStyles";
 import TableTemplate from "../../../components/TableTemplate";
 import PersonAddAlt1Icon from '@mui/icons-material/PersonAddAlt1';
 import PersonRemoveIcon from '@mui/icons-material/PersonRemove';
@@ -18,7 +20,35 @@ import SpeedDialTemplate from "../../../components/SpeedDialTemplate";
 import Popup from "../../../components/Popup";
 import DeleteIcon from "@mui/icons-material/Delete";
 import PostAddIcon from '@mui/icons-material/PostAdd';
-
+import { alignProperty } from "@mui/material/styles/cssUtils";
+import { CenterFocusStrong } from "@mui/icons-material";
+const CustomButton = ({ onClick, children }) => {
+    const buttonStyle = {
+      backgroundColor: 'blue',
+      color: 'white',
+      padding: '10px 20px',
+      borderRadius: '5px',
+      border: 'none',
+      cursor: 'pointer',
+      display: 'flex',            // Use flexbox
+      alignItems: 'center',       // Center items vertically
+      justifyContent: 'center',
+      transition: 'background-color 0.3s',
+      '&:hover': {
+        backgroundColor: '#ffea00', // Yellow shade
+      },
+    };
+  
+    return (
+      <Button
+        variant="contained"
+        style={buttonStyle}
+        onClick={onClick}
+      >
+        {children}
+      </Button>
+    );
+  };
 const ClassDetails = () => {
     const params = useParams()
     const navigate = useNavigate()
@@ -75,9 +105,9 @@ const ClassDetails = () => {
     const SubjectsButtonHaver = ({ row }) => {
         return (
             <>
-                <IconButton onClick={() => deleteHandler(row.id, "Subject")}>
+                <CustomButton onClick={() => deleteHandler(row.id, "Subject")}>
                     <DeleteIcon color="error" />
-                </IconButton>
+                </CustomButton>
                 <BlueButton
                     variant="contained"
                     onClick={() => {
@@ -105,13 +135,13 @@ const ClassDetails = () => {
         return (
             <>
                 {response ?
-                    <Box sx={{ display: 'flex', justifyContent: 'flex-end', marginTop: '16px' }}>
-                        <GreenButton
+                    <Box sx={{ display: 'flex', justifyContent: 'center', marginTop: '16px' }}>
+                        <Button 
                             variant="contained"
                             onClick={() => navigate("/Admin/addsubject/" + classID)}
                         >
                             Add Subjects
-                        </GreenButton>
+                        </Button>
                     </Box>
                     :
                     <>
@@ -143,9 +173,9 @@ const ClassDetails = () => {
     const StudentsButtonHaver = ({ row }) => {
         return (
             <>
-                <IconButton onClick={() => deleteHandler(row.id, "Student")}>
+                <CustomButton onClick={() => deleteHandler(row.id, "Student")}>
                     <PersonRemoveIcon color="error" />
-                </IconButton>
+                </CustomButton>
                 <BlueButton
                     variant="contained"
                     onClick={() => navigate("/Admin/students/student/" + row.id)}
@@ -180,23 +210,35 @@ const ClassDetails = () => {
             <>
                 {getresponse ? (
                     <>
-                        <Box sx={{ display: 'flex', justifyContent: 'flex-end', marginTop: '16px' }}>
-                            <GreenButton
-                                variant="contained"
-                                onClick={() => navigate("/Admin/class/addstudents/" + classID)}
-                            >
-                                Add Students
-                            </GreenButton>
-                        </Box>
+                     <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center', marginTop: '16px' }}>
+    <Button
+        variant="contained"
+        onClick={() => navigate("/Admin/class/addstudents/" + classID)}
+    >
+        Add Students
+    </Button>
+</Box>
+
                     </>
                 ) : (
                     <>
-                        <Typography variant="h5" gutterBottom>
-                            Students List:
-                        </Typography>
+                    
+                    <Box
+    sx={{
+        boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)', // Apply box shadow
+        padding: '20px', // Add some padding for spacing
+        borderRadius: '10px', // Optional: Add border radius for rounded corners
+        backgroundColor: '#ffffff',
+        width:'100%' // Set background color to white
+    }}
+>
+    <Typography variant="h5" gutterBottom>
+    <span style={{ fontFamily: 'Times New Roman', fontWeight: 'bold', textAlign:'center'}}>Student Lists:</span>
+    </Typography>
+    <TableTemplate buttonHaver={StudentsButtonHaver} columns={studentColumns} rows={studentRows} />
+    <SpeedDialTemplate actions={studentActions} />
+</Box>
 
-                        <TableTemplate buttonHaver={StudentsButtonHaver} columns={studentColumns} rows={studentRows} />
-                        <SpeedDialTemplate actions={studentActions} />
                     </>
                 )}
             </>
@@ -206,7 +248,15 @@ const ClassDetails = () => {
     const ClassTeachersSection = () => {
         return (
             <>
-                Teachers
+                                 <Box
+    sx={{
+        boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)', // Apply box shadow
+        padding: '20px', // Add some padding for spacing
+        borderRadius: '10px', // Optional: Add border radius for rounded corners
+        backgroundColor: '#ffffff',
+        width:'100%' // Set background color to white
+    }}
+><span style={{ fontFamily: 'Times New Roman', fontWeight: 'bold', textAlign:'center'}}>Teachers:</span></Box>
             </>
         )
     }
@@ -217,11 +267,18 @@ const ClassDetails = () => {
 
         return (
             <>
+            <box sx={{ width: '100%', typography: 'body1', }}>
+            <Box sx={{
+    boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)', // Apply box shadow
+    padding: '20px', // Add some padding for spacing
+    borderRadius: '10px', 
+    backgroundcolor: '#ffffff',// Optional: Add border radius for rounded corners
+}}>
                 <Typography variant="h4" align="center" gutterBottom>
-                    Class Details
+                <span style={{ fontFamily: 'Times New Roman', fontWeight: 'bold', }}>Class Details</span> {/* Change font family, weight, and style */}
                 </Typography>
                 <Typography variant="h5" gutterBottom>
-                    This is Class {sclassDetails && sclassDetails.sclassName}
+                    Welcome to the Class {sclassDetails && sclassDetails.sclassName}
                 </Typography>
                 <Typography variant="h6" gutterBottom>
                     Number of Subjects: {numberOfSubjects}
@@ -229,22 +286,23 @@ const ClassDetails = () => {
                 <Typography variant="h6" gutterBottom>
                     Number of Students: {numberOfStudents}
                 </Typography>
+                </Box>
                 {getresponse &&
-                    <GreenButton
+                    <Button
                         variant="contained"
                         onClick={() => navigate("/Admin/class/addstudents/" + classID)}
                     >
                         Add Students
-                    </GreenButton>
+                    </Button>
                 }
                 {response &&
-                    <GreenButton
+                    <Button
                         variant="contained"
                         onClick={() => navigate("/Admin/addsubject/" + classID)}
                     >
                         Add Subjects
-                    </GreenButton>
-                }
+                    </Button>
+                }</box>
             </>
         );
     }
@@ -260,7 +318,7 @@ const ClassDetails = () => {
                             <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                                 <TabList onChange={handleChange} sx={{ position: 'fixed', width: '100%', bgcolor: 'background.paper', zIndex: 1 }}>
                                     <Tab label="Details" value="1" />
-                                    <Tab label="Subjects" value="2" />
+                                    {/* <Tab label="Subjects" value="2" /> */}
                                     <Tab label="Students" value="3" />
                                     <Tab label="Teachers" value="4" />
                                 </TabList>
