@@ -16,7 +16,7 @@ import {
 import { deleteUser } from "../../../redux/userRelated/userHandle";
 import PersonRemoveIcon from "@mui/icons-material/PersonRemove";
 import { StyledTableCell, StyledTableRow } from "../../../components/styles";
-import { BlueButton, GreenButton } from "../../../components/buttonStyles";
+import { BlueButton, GreenButton, ButtonContainer } from "../../../components/buttonStyles";
 import PersonAddAlt1Icon from "@mui/icons-material/PersonAddAlt1";
 import SpeedDialTemplate from "../../../components/SpeedDialTemplate";
 import Popup from "../../../components/Popup";
@@ -45,14 +45,16 @@ const ShowTeachers = () => {
   } else if (response) {
     return (
       <Box
-        sx={{ display: "flex", justifyContent: "flex-end", marginTop: "16px" }}
+        sx={{ display: "flex", justifyContent: "center", marginTop: "16px" }}
       >
-        <GreenButton
+        <ButtonContainer>
+          <GreenButton
           variant="contained"
           onClick={() => navigate("/Admin/teachers/chooseclass")}
         >
-          Add Teacher
-        </GreenButton>
+            Add Teacher
+          </GreenButton>
+        </ButtonContainer>
       </Box>
     );
   } else if (error) {
