@@ -7,7 +7,7 @@ import {
     Paper, Box, IconButton
 } from '@mui/material';
 import PersonRemoveIcon from '@mui/icons-material/PersonRemove';
-import { BlackButton, BlueButton, GreenButton } from '../../../components/buttonStyles';
+import { BlackButton, BlueButton, GreenButton, ButtonContainer } from '../../../components/buttonStyles';
 import TableTemplate from '../../../components/TableTemplate';
 import PersonAddAlt1Icon from '@mui/icons-material/PersonAddAlt1';
 import SpeedDialTemplate from '../../../components/SpeedDialTemplate';
@@ -191,10 +191,12 @@ const ShowStudents = () => {
                 :
                 <>
                     {response ?
-                        <Box sx={{ display: 'flex', justifyContent: 'flex-end', marginTop: '16px' }}>
-                            <GreenButton variant="contained" onClick={() => navigate("/Admin/addstudents")}>
-                                Add Students
-                            </GreenButton>
+                        <Box sx={{ display: 'flex', justifyContent: 'center', marginTop: '16px' }}>
+                            <ButtonContainer>
+                              <GreenButton variant="contained" onClick={() => navigate("/Admin/addstudents")}>
+                                  Add Students
+                              </GreenButton>
+                                      </ButtonContainer>
                         </Box>
                         :
                         <Paper sx={{ width: '100%', overflow: 'hidden' }}>
