@@ -84,16 +84,36 @@ const ShowNotices = () => {
       {loading ? (
         <div>Loading...</div>
       ) : (
-        <>
-          {response ? (
+        <Paper sx={{ width: "100%", overflow: "hidden" }}>
+          {Array.isArray(noticesList) && noticesList.length > 0 ? (
+            <>
+              <TableTemplate
+                buttonHaver={NoticeButtonHaver}
+                columns={noticeColumns}
+                rows={noticeRows}
+              />
+              <SpeedDialTemplate actions={actions} />
+            </>
+          ) : (
             <Box
               sx={{
                 display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
                 justifyContent: "center",
-                marginTop: "16px",
+                height: "300px",
+                marginBottom: "16px",
               }}
             >
-              <ButtonContainer>
+              <img
+                src={nodata}
+                alt="No Data"
+                style={{ maxWidth: "100%", maxHeight: "225px" }}
+              />
+              <Typography variant="h5" sx={{ marginTop: "16px" }}>
+                No notices found
+              </Typography>
+              <ButtonContainer sx={{ marginTop: "16px" }}>
                 <GreenButton
                   variant="contained"
                   onClick={() => navigate("/Admin/addnotice")}
@@ -102,35 +122,8 @@ const ShowNotices = () => {
                 </GreenButton>
               </ButtonContainer>
             </Box>
-          ) : (
-            <Paper sx={{ width: "100%", overflow: "hidden" }}>
-              {Array.isArray(noticesList) && noticesList.length > 0 ? (
-                <TableTemplate
-                  buttonHaver={NoticeButtonHaver}
-                  columns={noticeColumns}
-                  rows={noticeRows}
-                />
-              ) : (
-                <Box
-                  sx={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    height: "300px",
-                  }}
-                >
-                  <img
-                    src={nodata}
-                    alt="No Data"
-                    style={{ maxWidth: "100%", maxHeight: "225px" }}
-                  />
-                  <Typography variant="h5">No notices found</Typography>
-                </Box>
-              )}
-              <SpeedDialTemplate actions={actions} />
-            </Paper>
           )}
-        </>
+        </Paper>
       )}
     </>
   );
