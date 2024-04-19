@@ -7,7 +7,7 @@ import PostAddIcon from "@mui/icons-material/PostAdd";
 import { Paper, Box, IconButton } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import TableTemplate from "../../../components/TableTemplate";
-import { BlueButton, GreenButton } from "../../../components/buttonStyles";
+import { BlueButton, GreenButton, ButtonContainer } from "../../../components/buttonStyles";
 import SpeedDialTemplate from "../../../components/SpeedDialTemplate";
 import Popup from "../../../components/Popup";
 
@@ -99,16 +99,18 @@ const ShowSubjects = () => {
             <Box
               sx={{
                 display: "flex",
-                justifyContent: "flex-end",
+                justifyContent: "center",
                 marginTop: "16px",
               }}
             >
-              <GreenButton
+              <ButtonContainer>
+                <GreenButton
                 variant="contained"
                 onClick={() => navigate("/Admin/subjects/chooseclass")}
               >
-                Add Subjects
-              </GreenButton>
+                  Add Subjects
+                </GreenButton>
+                  </ButtonContainer>
             </Box>
           ) : (
             <Paper sx={{ width: "100%", overflow: "hidden" }}>
