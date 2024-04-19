@@ -101,6 +101,7 @@ const ShowNotices = () => {
                 flexDirection: "column",
                 alignItems: "center",
                 justifyContent: "center",
+                height: "100%",
                 marginBottom: "16px",
               }}
             >
