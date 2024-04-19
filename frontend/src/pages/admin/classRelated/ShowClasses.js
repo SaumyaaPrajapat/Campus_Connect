@@ -150,11 +150,11 @@ const ShowClasses = () => {
         <>
           {getresponse ?
             <Box sx={{ display: 'flex', justifyContent: 'center', marginTop: '16px' }}>
-    <ButtonContainer>
-              <GreenButton variant="contained" onClick={() => navigate("/Admin/addclass")}>
-                Add Class
-              </GreenButton>
-                  </ButtonContainer>
+              <ButtonContainer>
+                <GreenButton variant="contained" onClick={() => navigate("/Admin/addclass")}>
+                  Add Class
+                </GreenButton>
+              </ButtonContainer>
             </Box>
             :
             <>
@@ -199,9 +199,3 @@ const styles = {
   }
 }
 
-const ButtonContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-`;
