@@ -33,7 +33,6 @@ import nodata from "../../../assets/nodata.png";
 const ShowClasses = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
   const { sclassesList, loading, error, getresponse } = useSelector(
     (state) => state.sclass
   );
