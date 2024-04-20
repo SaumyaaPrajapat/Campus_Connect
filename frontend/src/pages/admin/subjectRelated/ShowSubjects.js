@@ -4,12 +4,17 @@ import { useNavigate } from "react-router-dom";
 import { getSubjectList } from "../../../redux/sclassRelated/sclassHandle";
 import { deleteUser } from "../../../redux/userRelated/userHandle";
 import PostAddIcon from "@mui/icons-material/PostAdd";
-import { Paper, Box, IconButton } from "@mui/material";
+import { Paper, Box, IconButton, Typography } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import TableTemplate from "../../../components/TableTemplate";
-import { BlueButton, GreenButton, ButtonContainer } from "../../../components/buttonStyles";
+import {
+  BlueButton,
+  GreenButton,
+  ButtonContainer,
+} from "../../../components/buttonStyles";
 import SpeedDialTemplate from "../../../components/SpeedDialTemplate";
 import Popup from "../../../components/Popup";
+import nodata from "../../../assets/nodata.png";
 
 const ShowSubjects = () => {
   const navigate = useNavigate();
@@ -105,24 +110,54 @@ const ShowSubjects = () => {
             >
               <ButtonContainer>
                 <GreenButton
-                variant="contained"
-                onClick={() => navigate("/Admin/subjects/chooseclass")}
-              >
+                  variant="contained"
+                  onClick={() => navigate("/Admin/subjects/chooseclass")}
+                >
                   Add Subjects
                 </GreenButton>
-                  </ButtonContainer>
+              </ButtonContainer>
             </Box>
           ) : (
-            <Paper sx={{ width: "100%", overflow: "hidden" }}>
-              {Array.isArray(subjectsList) && subjectsList.length > 0 && (
-                <TableTemplate
-                  buttonHaver={SubjectsButtonHaver}
-                  columns={subjectColumns}
-                  rows={subjectRows}
-                />
+            <>
+              {Array.isArray(subjectsList) && subjectsList.length > 0 ? (
+                <Paper sx={{ width: "100%", overflow: "hidden" }}>
+                  <TableTemplate
+                    buttonHaver={SubjectsButtonHaver}
+                    columns={subjectColumns}
+                    rows={subjectRows}
+                  />
+                  <SpeedDialTemplate actions={actions} />
+                </Paper>
+              ) : (
+                <Box
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    height: "300px",
+                    marginBottom: "16px",
+                  }}
+                >
+                  <img
+                    src={nodata}
+                    alt="No Data"
+                    style={{ maxWidth: "100%", maxHeight: "225px" }}
+                  />
+                  <Typography variant="h5" sx={{ marginTop: "16px" }}>
+                    No subjects found
+                  </Typography>
+                  <ButtonContainer sx={{ marginTop: "16px" }}>
+                    <GreenButton
+                      variant="contained"
+                      onClick={() => navigate("/Admin/addclass")}
+                    >
+                      Add Subjects
+                    </GreenButton>
+                  </ButtonContainer>
+                </Box>
               )}
-              <SpeedDialTemplate actions={actions} />
-            </Paper>
+            </>
           )}
         </>
       )}
