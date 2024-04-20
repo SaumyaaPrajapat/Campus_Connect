@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { IconButton, Box, Menu, MenuItem, ListItemIcon, Tooltip } from '@mui/material';
+import React, { useEffect, useState } from 'react';
+import { IconButton, Box, Menu, MenuItem, ListItemIcon, Tooltip, Typography, Paper } from '@mui/material';
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -7,7 +7,6 @@ import { deleteUser } from '../../../redux/userRelated/userHandle';
 import { getAllSclasses } from '../../../redux/sclassRelated/sclassHandle';
 import { BlueButton, GreenButton, ButtonContainer } from '../../../components/buttonStyles';
 import TableTemplate from '../../../components/TableTemplate';
-
 import SpeedDialIcon from '@mui/material/SpeedDialIcon';
 import PostAddIcon from '@mui/icons-material/PostAdd';
 import PersonAddAlt1Icon from '@mui/icons-material/PersonAddAlt1';
@@ -15,48 +14,47 @@ import AddCardIcon from '@mui/icons-material/AddCard';
 import styled from 'styled-components';
 import SpeedDialTemplate from '../../../components/SpeedDialTemplate';
 import Popup from '../../../components/Popup';
+import nodata from "../../../assets/nodata.png";
 
 const ShowClasses = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const { sclassesList, loading, error, getresponse } = useSelector((state) => state.sclass);
-  const { currentUser } = useSelector(state => state.user)
+  const { currentUser } = useSelector(state => state.user);
 
-  const adminID = currentUser._id
+  const adminID = currentUser._id;
 
   useEffect(() => {
     dispatch(getAllSclasses(adminID, "Sclass"));
   }, [adminID, dispatch]);
 
   if (error) {
-    console.log(error)
+    console.log(error);
   }
 
   const [showPopup, setShowPopup] = useState(false);
   const [message, setMessage] = useState("");
 
   const deleteHandler = (deleteID, address) => {
-    console.log(deleteID);
-    console.log(address);
-    setMessage("Sorry the delete function has been disabled for now.")
-    setShowPopup(true)
+    setMessage("Sorry, the delete function has been disabled for now.");
+    setShowPopup(true);
     // dispatch(deleteUser(deleteID, address))
     //   .then(() => {
     //     dispatch(getAllSclasses(adminID, "Sclass"));
     //   })
-  }
+  };
 
   const sclassColumns = [
     { id: 'name', label: 'Class Name', minWidth: 170 },
-  ]
+  ];
 
   const sclassRows = sclassesList && sclassesList.length > 0 && sclassesList.map((sclass) => {
     return {
       name: sclass.sclassName,
       id: sclass._id,
     };
-  })
+  });
 
   const SclassButtonHaver = ({ row }) => {
     const actions = [
@@ -68,8 +66,7 @@ const ShowClasses = () => {
         <IconButton onClick={() => deleteHandler(row.id, "Sclass")} color="secondary">
           <DeleteIcon color="error" />
         </IconButton>
-        <BlueButton variant="contained"
-          onClick={() => navigate("/Admin/classes/class/" + row.id)}>
+        <BlueButton variant="contained" onClick={() => navigate("/Admin/classes/class/" + row.id)}>
           View
         </BlueButton>
         <ActionMenu actions={actions} />
@@ -129,7 +126,7 @@ const ShowClasses = () => {
         </Menu>
       </>
     );
-  }
+  };
 
   const actions = [
     {
@@ -158,15 +155,45 @@ const ShowClasses = () => {
             </Box>
             :
             <>
-              {Array.isArray(sclassesList) && sclassesList.length > 0 &&
-                <TableTemplate buttonHaver={SclassButtonHaver} columns={sclassColumns} rows={sclassRows} />
+              {Array.isArray(sclassesList) && sclassesList.length > 0 ?
+                <Paper sx={{ width: "100%", overflow: "hidden" }}>
+                  <TableTemplate buttonHaver={SclassButtonHaver} columns={sclassColumns} rows={sclassRows} />
+                  <SpeedDialTemplate actions={actions} />
+                </Paper>
+                :
+                <Box
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    height: "300px",
+                    marginBottom: "16px",
+                  }}
+                >
+                  <img
+                    src={nodata}
+                    alt="No Data"
+                    style={{ maxWidth: "100%", maxHeight: "225px" }}
+                  />
+                  <Typography variant="h5" sx={{ marginTop: "16px" }}>
+                    No classes found
+                  </Typography>
+                  <ButtonContainer sx={{ marginTop: "16px" }}>
+                    <GreenButton
+                      variant="contained"
+                      onClick={() => navigate("/Admin/addclass")}
+                    >
+                      Add Class
+                    </GreenButton>
+                  </ButtonContainer>
+                </Box>
               }
-              <SpeedDialTemplate actions={actions} />
-            </>}
+            </>
+          }
         </>
       }
       <Popup message={message} setShowPopup={setShowPopup} showPopup={showPopup} />
-
     </>
   );
 };
@@ -197,5 +224,4 @@ const styles = {
       zIndex: 0,
     },
   }
-}
-
+};
