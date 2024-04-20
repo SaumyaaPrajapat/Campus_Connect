@@ -6,8 +6,6 @@ import {
   MenuItem,
   ListItemIcon,
   Tooltip,
-  Typography,
-  Paper,
 } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useDispatch, useSelector } from "react-redux";
@@ -28,11 +26,11 @@ import AddCardIcon from "@mui/icons-material/AddCard";
 import styled from "styled-components";
 import SpeedDialTemplate from "../../../components/SpeedDialTemplate";
 import Popup from "../../../components/Popup";
-import nodata from "../../../assets/nodata.png";
 
 const ShowClasses = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
   const { sclassesList, loading, error, getresponse } = useSelector(
     (state) => state.sclass
   );
@@ -198,44 +196,14 @@ const ShowClasses = () => {
             </Box>
           ) : (
             <>
-              {Array.isArray(sclassesList) && sclassesList.length > 0 ? (
-                <Paper sx={{ width: "100%", overflow: "hidden" }}>
-                  <TableTemplate
-                    buttonHaver={SclassButtonHaver}
-                    columns={sclassColumns}
-                    rows={sclassRows}
-                  />
-                  <SpeedDialTemplate actions={actions} />
-                </Paper>
-              ) : (
-                <Box
-                  sx={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    height: "300px",
-                    marginBottom: "16px",
-                  }}
-                >
-                  <img
-                    src={nodata}
-                    alt="No Data"
-                    style={{ maxWidth: "100%", maxHeight: "225px" }}
-                  />
-                  <Typography variant="h5" sx={{ marginTop: "16px" }}>
-                    No classes found
-                  </Typography>
-                  <ButtonContainer sx={{ marginTop: "16px" }}>
-                    <GreenButton
-                      variant="contained"
-                      onClick={() => navigate("/Admin/addclass")}
-                    >
-                      Add Class
-                    </GreenButton>
-                  </ButtonContainer>
-                </Box>
+              {Array.isArray(sclassesList) && sclassesList.length > 0 && (
+                <TableTemplate
+                  buttonHaver={SclassButtonHaver}
+                  columns={sclassColumns}
+                  rows={sclassRows}
+                />
               )}
+              <SpeedDialTemplate actions={actions} />
             </>
           )}
         </>
