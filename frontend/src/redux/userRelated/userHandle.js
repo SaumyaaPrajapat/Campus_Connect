@@ -13,14 +13,14 @@ import {
   getError,
 } from "./userSlice";
 
-//const process.env.REACT_APP_BASE_URL = "http://localhost:5000";
+const REACT_APP_BASE_URL = "http://localhost:5000";
 
 export const loginUser = (fields, role) => async (dispatch) => {
   dispatch(authRequest());
 
   try {
     const result = await axios.post(
-      `${process.env.REACT_APP_BASE_URL}/${role}Login`,
+      `${REACT_APP_BASE_URL}/${role}Login`,
       fields,
       {
         headers: { "Content-Type": "application/json" },
@@ -41,7 +41,7 @@ export const registerUser = (fields, role) => async (dispatch) => {
 
   try {
     const result = await axios.post(
-      `${process.env.REACT_APP_BASE_URL}/${role}Reg`,
+      `${REACT_APP_BASE_URL}/${role}Reg`,
       fields,
       {
         headers: { "Content-Type": "application/json" },
@@ -67,9 +67,7 @@ export const getUserDetails = (id, address) => async (dispatch) => {
   dispatch(getRequest());
 
   try {
-    const result = await axios.get(
-      `${process.env.REACT_APP_BASE_URL}/${address}/${id}`
-    );
+    const result = await axios.get(`${REACT_APP_BASE_URL}/${address}/${id}`);
     if (result.data) {
       dispatch(doneSuccess(result.data));
     }
@@ -82,7 +80,7 @@ export const getUserDetails = (id, address) => async (dispatch) => {
 //     dispatch(getRequest());
 
 //     try {
-//         const result = await axios.delete(`${process.env.REACT_APP_BASE_URL}/${address}/${id}`);
+//         const result = await axios.delete(`${REACT_APP_BASE_URL}/${address}/${id}`);
 //         if (result.data.message) {
 //             dispatch(getFailed(result.data.message));
 //         } else {
@@ -103,7 +101,7 @@ export const updateUser = (fields, id, address) => async (dispatch) => {
 
   try {
     const result = await axios.put(
-      `${process.env.REACT_APP_BASE_URL}/${address}/${id}`,
+      `${REACT_APP_BASE_URL}/${address}/${id}`,
       fields,
       {
         headers: { "Content-Type": "application/json" },
@@ -124,7 +122,7 @@ export const addStuff = (fields, address) => async (dispatch) => {
 
   try {
     const result = await axios.post(
-      `${process.env.REACT_APP_BASE_URL}/${address}Create`,
+      `${REACT_APP_BASE_URL}/${address}Create`,
       fields,
       {
         headers: { "Content-Type": "application/json" },
