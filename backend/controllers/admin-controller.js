@@ -87,7 +87,8 @@ const adminLogIn = async (req, res) => {
   if (req.body.email && req.body.password) {
     let admin = await Admin.findOne({ email: req.body.email });
     if (admin) {
-      if (req.body.password === admin.password) {
+      const validated = await bcrypt.compare(req.body.password, admin.password);
+      if (validated) {
         admin.password = undefined;
         res.send(admin);
       } else {
