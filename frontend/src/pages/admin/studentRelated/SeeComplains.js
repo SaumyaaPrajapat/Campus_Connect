@@ -8,7 +8,7 @@ import nocomplains from "../../../assets/nocomplains.jpg";
 const SeeComplains = () => {
   const label = { inputProps: { "aria-label": "Checkbox demo" } };
   const dispatch = useDispatch();
-  const { complainsList, loading, error, response } = useSelector(
+  const { complainsList, error, response } = useSelector(
     (state) => state.complain
   );
   const { currentUser } = useSelector((state) => state.user);
@@ -53,57 +53,51 @@ const SeeComplains = () => {
   };
 
   return (
-    <>
-      {loading ? (
-        <div>Loading...</div>
+    <Paper sx={{ width: "100%", overflow: "hidden" }}>
+      {response ? (
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "100vh",
+          }}
+        >
+          {/* Content for response */}
+        </div>
       ) : (
-        <Paper sx={{ width: "100%", overflow: "hidden" }}>
-          {response ? (
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                height: "100vh",
-              }}
-            >
-              {/* Content for response */}
-            </div>
+        <>
+          {Array.isArray(complainsList) && complainsList.length > 0 ? (
+            <TableTemplate
+              buttonHaver={ComplainButtonHaver}
+              columns={complainColumns}
+              rows={complainRows}
+            />
           ) : (
-            <>
-              {Array.isArray(complainsList) && complainsList.length > 0 ? (
-                <TableTemplate
-                  buttonHaver={ComplainButtonHaver}
-                  columns={complainColumns}
-                  rows={complainRows}
-                />
-              ) : (
-                <Box sx={{ textAlign: "center", mt: "10px" }}>
-                  <img
-                    src={nocomplains}
-                    alt="No Complains"
-                    style={{ height: "200px", maxWidth: "100%" }}
-                  />
-                  <Box
-                    sx={{
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "center",
-                      textAlign: "center",
-                      mt: "10px",
-                      fontWeight: "bold",
-                      fontSize: "20px",
-                    }}
-                  >
-                    <p>No Complains Right Now</p>
-                  </Box>
-                </Box>
-              )}
-            </>
+            <Box sx={{ textAlign: "center", mt: "10px" }}>
+              <img
+                src={nocomplains}
+                alt="No Complains"
+                style={{ height: "200px", maxWidth: "100%" }}
+              />
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  textAlign: "center",
+                  mt: "10px",
+                  fontWeight: "bold",
+                  fontSize: "20px",
+                }}
+              >
+                <p>No Complains Right Now</p>
+              </Box>
+            </Box>
           )}
-        </Paper>
+        </>
       )}
-    </>
+    </Paper>
   );
 };
 
