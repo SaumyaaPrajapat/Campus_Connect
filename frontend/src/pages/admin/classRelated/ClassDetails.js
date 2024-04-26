@@ -288,17 +288,17 @@ const ClassDetails = () => {
                 </Typography>
                 </Box>
                 {getresponse &&
-                 <div style={{ marginBottom: '10px' }}>
+                <div style={{ display: 'flex', gap: '10px' }}>
                     <Button
                         variant="contained"
                         onClick={() => navigate("/Admin/class/addstudents/" + classID)}
                     >
                         Add Students
                     </Button>
-                         </div>
+                 
                 }
                 {response &&
-                     <div style={{ marginBottom: '10px' }}>
+                  
                     <Button
                         variant="contained"
                         onClick={() => navigate("/Admin/addsubject/" + classID)}
