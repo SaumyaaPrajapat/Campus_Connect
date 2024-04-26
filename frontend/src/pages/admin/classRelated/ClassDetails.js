@@ -288,27 +288,25 @@ const ClassDetails = () => {
                     Number of Students: {numberOfStudents}
                 </Typography>
                 </Box>
-                {getresponse &&
-                <div style={{ display: 'flex', gap: '10px' }}>
-                    <Button
-                        variant="contained"
-                        onClick={() => navigate("/Admin/class/addstudents/" + classID)}
-                    >
-                        Add Students
-                    </Button>
-                 
-                }
-                {response &&
-                    
-                    <Button
-                        variant="contained"
-                        onClick={() => navigate("/Admin/addsubject/" + classID)}
-                    >
-                        Add Subjects
-                    </Button></div>
-                      
-                }   </box>
+                {getresponse && response && (
+    <div style={{ display: 'flex', gap: '10px' }}>
+        <Button
+            variant="contained"
+            onClick={() => navigate("/Admin/class/addstudents/" + classID)}
+        >
+            Add Students
+        </Button>
+        <Button
+            variant="contained"
+            onClick={() => navigate("/Admin/addsubject/" + classID)}
+        >
+            Add Subjects
+        </Button>
+    </div>)}
+    </box>
             </>
+
+
         );
     }
 
