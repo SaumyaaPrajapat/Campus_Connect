@@ -84,11 +84,7 @@ const SeeComplains = () => {
                 )}
                 {!loading && !response && complainsList && complainsList.length === 0 && (
                   <Box sx={{ textAlign: "center", mt: "10px" }}>
-                    <img
-                      src={nocomplains}
-                      alt="No Complains"
-                      style={{ height: "200px", maxWidth: "100%" }}
-                    />
+                   
                     <Box
                       sx={{
                         display: "flex",
@@ -99,7 +95,11 @@ const SeeComplains = () => {
                         fontWeight: "bold",
                         fontSize: "20px",
                       }}
-                    >
+                    > <img
+                src={nocomplains}
+                alt="No Data"
+                style={{ maxWidth: "100%", maxHeight: "225px" }}
+              />
                       <p>No Complains Right Now</p>
                     </Box>
                   </Box>
