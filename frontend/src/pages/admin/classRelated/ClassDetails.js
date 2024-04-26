@@ -304,9 +304,9 @@ const ClassDetails = () => {
                         onClick={() => navigate("/Admin/addsubject/" + classID)}
                     >
                         Add Subjects
-                    </Button>
+                    </Button></div>
                       
-                }   </div></box>
+                }   </box>
             </>
         );
     }
