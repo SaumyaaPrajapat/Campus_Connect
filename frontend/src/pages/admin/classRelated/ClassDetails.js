@@ -135,7 +135,7 @@ const ClassDetails = () => {
         return (
             <>
                 {response ?
-                    <Box sx={{ display: 'flex', justifyContent: 'center', marginTop: '16px' }}>
+                    <Box sx={{ display: 'flex', justifyContent: 'center', marginTop: '16px',paddinTop:'15px' }}>
                         <Button 
                             variant="contained"
                             onClick={() => navigate("/Admin/addsubject/" + classID)}
@@ -176,6 +176,7 @@ const ClassDetails = () => {
                 <CustomButton onClick={() => deleteHandler(row.id, "Student")}>
                     <PersonRemoveIcon color="error" />
                 </CustomButton>
+         <div style={{ display: 'flex', gap: '10px' }}>
                 <BlueButton
                     variant="contained"
                     onClick={() => navigate("/Admin/students/student/" + row.id)}
@@ -189,7 +190,7 @@ const ClassDetails = () => {
                     }
                 >
                     Attendance
-                </PurpleButton>
+                </PurpleButton></div>
             </>
         );
     };
@@ -298,7 +299,7 @@ const ClassDetails = () => {
                  
                 }
                 {response &&
-                  
+                    
                     <Button
                         variant="contained"
                         onClick={() => navigate("/Admin/addsubject/" + classID)}
