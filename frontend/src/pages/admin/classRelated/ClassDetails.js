@@ -305,8 +305,8 @@ const ClassDetails = () => {
                     >
                         Add Subjects
                     </Button>
-                         </div>
-                }</box>
+                      
+                }   </div></box>
             </>
         );
     }
