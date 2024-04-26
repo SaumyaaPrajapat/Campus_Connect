@@ -11,20 +11,16 @@ const SeeComplains = () => {
   const { complainsList, error, response } = useSelector(
     (state) => state.complain
   );
- useEffect(() => {
-    console.log("Fetching complains...");
+  const { currentUser } = useSelector((state) => state.user);
+
+  useEffect(() => {
     dispatch(getAllComplains(currentUser._id, "Complain"));
   }, [currentUser._id, dispatch]);
 
-  useEffect(() => {
-    console.log("Complains list:", complainsList);
-    console.log("Error:", error);
-    console.log("Response:", response);
-  }, [complainsList, error, response]);
-
   if (error) {
-    console.log("Error fetching complains:", error);
+    console.log(error);
   }
+
   const complainColumns = [
     { id: "user", label: "User", minWidth: 170 },
     { id: "complaint", label: "Complaint", minWidth: 100 },
