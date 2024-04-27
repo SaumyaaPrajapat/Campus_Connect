@@ -2,7 +2,8 @@ import React, { useEffect } from 'react';
 import { getTeacherDetails } from '../../../redux/teacherRelated/teacherHandle';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { Button, Container, Typography } from '@mui/material';
+import { Button, Container, Typography, Card, CardContent } from '@mui/material';
+import styled from 'styled-components';
 
 const TeacherDetails = () => {
     const navigate = useNavigate();
@@ -17,7 +18,7 @@ const TeacherDetails = () => {
     }, [dispatch, teacherID]);
 
     if (error) {
-        console.log(error);
+        console.error(error);
     }
 
     const isSubjectNamePresent = teacherDetails?.teachSubject?.subName;
@@ -27,11 +28,11 @@ const TeacherDetails = () => {
     };
 
     return (
-        <>
+        <StyledCard elevation={3}>
             {loading ? (
-                <div>Loading...</div>
+                <CardContent>Loading...</CardContent>
             ) : (
-                <Container>
+                <CardContent>
                     <Typography variant="h4" align="center" gutterBottom>
                         Teacher Details
                     </Typography>
@@ -55,10 +56,17 @@ const TeacherDetails = () => {
                             Add Subject
                         </Button>
                     )}
-                </Container>
+                </CardContent>
             )}
-        </>
+        </StyledCard>
     );
 };
 
 export default TeacherDetails;
+
+const StyledCard = styled(Card)`
+  margin: 20px;
+  background-color: white;
+  border-radius: 10px;
+  font-family: 'Roboto', sans-serif; /* Set desired font family */
+`;
