@@ -173,24 +173,24 @@ const ClassDetails = () => {
     const StudentsButtonHaver = ({ row }) => {
         return (
             <>
-                <CustomButton onClick={() => deleteHandler(row.id, "Student")}>
-                    <PersonRemoveIcon color="error" />
-                </CustomButton>
-         <div style={{ display: 'flex', gap: '10px' }}>
-                <BlueButton
-                    variant="contained"
-                    onClick={() => navigate("/Admin/students/student/" + row.id)}
-                >
-                    View
-                </BlueButton>
-                <PurpleButton
-                    variant="contained"
-                    onClick={() =>
-                        navigate("/Admin/students/student/attendance/" + row.id)
-                    }
-                >
-                    Attendance
-                </PurpleButton></div>
+               <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+    <CustomButton onClick={() => deleteHandler(row.id, "Student")}>
+        <PersonRemoveIcon color="error" />
+    </CustomButton>
+    <BlueButton
+        variant="contained"
+        onClick={() => navigate("/Admin/students/student/" + row.id)}
+    >
+        View
+    </BlueButton>
+    <PurpleButton
+        variant="contained"
+        onClick={() => navigate("/Admin/students/student/attendance/" + row.id)}
+    >
+        Attendance
+    </PurpleButton>
+</div>
+
             </>
         );
     };
