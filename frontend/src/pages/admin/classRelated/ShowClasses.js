@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { deleteUser } from '../../../redux/userRelated/userHandle';
 import { getAllSclasses } from '../../../redux/sclassRelated/sclassHandle';
-import { BlueButton, GreenButton } from '../../../components/buttonStyles';
+import { BlueButton, GreenButton, ButtonContainer } from '../../../components/buttonStyles';
 import TableTemplate from '../../../components/TableTemplate';
 
 import SpeedDialIcon from '@mui/material/SpeedDialIcon';
@@ -150,9 +150,11 @@ const ShowClasses = () => {
         <>
           {getresponse ?
             <Box sx={{ display: 'flex', justifyContent: 'flex-end', marginTop: '16px' }}>
-              <GreenButton variant="contained" onClick={() => navigate("/Admin/addclass")}>
-                Add Class
-              </GreenButton>
+              <ButtonContainer>
+                <GreenButton variant="contained" onClick={() => navigate("/Admin/addclass")}>
+                   Add Class
+                </GreenButton>
+              </ButtonContainer>
             </Box>
             :
             <>
