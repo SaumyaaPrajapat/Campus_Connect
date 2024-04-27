@@ -14,6 +14,7 @@ import StudentSideBar from "./StudentSideBar";
 import { Navigate, Route, Routes } from "react-router-dom";
 import StudentHomePage from "./StudentHomePage";
 import StudentProfile from "./StudentProfile";
+import StudentForm from "./StudentForm";
 import StudentSubjects from "./StudentSubjects";
 import ViewStdAttendance from "./ViewStdAttendance";
 import StudentComplain from "./StudentComplain";
@@ -83,6 +84,7 @@ const StudentDashboard = () => {
             <Route path="*" element={<Navigate to="/" />} />
             <Route path="/Student/dashboard" element={<StudentHomePage />} />
             <Route path="/Student/profile" element={<StudentProfile />} />
+            <Route path="/Student/form" element={<StudentForm />} />
 
             <Route path="/Student/subjects" element={<StudentSubjects />} />
             <Route path="/Student/attendance" element={<ViewStdAttendance />} />

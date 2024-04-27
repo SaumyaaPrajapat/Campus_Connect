@@ -8,8 +8,11 @@ import {
   Box,
   Avatar,
   Container,
+  Paper,
+  Button,
 } from "@mui/material";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const StudentProfile = () => {
   const { currentUser, response, error } = useSelector((state) => state.user);
@@ -75,10 +78,28 @@ const StudentProfile = () => {
                 </Typography>
               </Box>
             </Grid>
+            <Grid item xs={12}>
+              <Box display="flex" justifyContent="center">
+                <Typography
+                  variant="subtitle1"
+                  component="p"
+                  textAlign="center"
+                >
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    component={Link}
+                    to="/student/form"
+                  >
+                    Fill Personal Info
+                  </Button>
+                </Typography>
+              </Box>
+            </Grid>
           </Grid>
         </CardContent>
       </StyledCard>
-      <StyledCard elevation={3}>
+      <Paper elevation={3}>
         <CardContent>
           <Typography variant="h6" gutterBottom>
             Personal Information
@@ -86,37 +107,38 @@ const StudentProfile = () => {
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <Typography variant="subtitle1" component="p">
-                <strong>Date of Birth:</strong> January 1, 2000
+                <strong>Date of Birth:</strong> {currentUser.dateOfBirth}
               </Typography>
             </Grid>
             <Grid item xs={12} sm={6}>
               <Typography variant="subtitle1" component="p">
-                <strong>Gender:</strong> Male
+                <strong>Gender:</strong> {currentUser.gender}
               </Typography>
             </Grid>
             <Grid item xs={12} sm={6}>
               <Typography variant="subtitle1" component="p">
-                <strong>Email:</strong> john.doe@example.com
+                <strong>Email:</strong> {currentUser.email}
               </Typography>
             </Grid>
             <Grid item xs={12} sm={6}>
               <Typography variant="subtitle1" component="p">
-                <strong>Phone:</strong> (123) 456-7890
+                <strong>Phone:</strong> {currentUser.phone}
               </Typography>
             </Grid>
             <Grid item xs={12} sm={6}>
               <Typography variant="subtitle1" component="p">
-                <strong>Address:</strong> 123 Main Street, City, Country
+                <strong>Address:</strong> {currentUser.address}
               </Typography>
             </Grid>
             <Grid item xs={12} sm={6}>
               <Typography variant="subtitle1" component="p">
-                <strong>Emergency Contact:</strong> (987) 654-3210
+                <strong>Emergency Contact:</strong>{" "}
+                {currentUser.emergencyContact}
               </Typography>
             </Grid>
           </Grid>
         </CardContent>
-      </StyledCard>
+      </Paper>
     </Container>
   );
 };
