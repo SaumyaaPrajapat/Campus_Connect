@@ -177,11 +177,7 @@ const ShowClasses = () => {
         <>
           {getresponse ? (
             <Box
-              sx={{
-                display: "flex",
-                justifyContent: "center",
-                marginTop: "16px",
-              }}
+           
             >
               <ButtonContainer>
                 <GreenButton
