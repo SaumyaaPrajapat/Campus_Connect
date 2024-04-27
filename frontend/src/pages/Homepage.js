@@ -45,7 +45,7 @@ const Homepage = () => {
           <StyledPaper elevation={3}>
             <AnimatedTitle>Campus Connect</AnimatedTitle>
             <StyledText>
-              Efficiently manage college administration, organize classes, and
+              Efficiently manage school administration, organize classes, and
               incorporate both students and faculty seamlessly. Monitor
               attendance, evaluate performance, and deliver feedback seamlessly.
               Easily access records, check grades, and foster effortless
