@@ -55,7 +55,7 @@ const ShowClasses = () => {
     dispatch(deleteUser(deleteID, address))
       .then(() => {
         dispatch(getAllSclasses(adminID, "Sclass"));
-      })
+      });
   };
 
   const sclassColumns = [{ id: "name", label: "Class Name", minWidth: 170 }];
@@ -177,7 +177,11 @@ const ShowClasses = () => {
         <>
           {getresponse ? (
             <Box
-           
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                marginBottom: "20px", // Adjust as needed
+              }}
             >
               <ButtonContainer>
                 <GreenButton
