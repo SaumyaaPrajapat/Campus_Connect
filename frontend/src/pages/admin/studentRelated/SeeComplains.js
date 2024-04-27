@@ -5,7 +5,7 @@ import {
 } from '@mui/material';
 import { getAllComplains } from '../../../redux/complainRelated/complainHandle';
 import TableTemplate from '../../../components/TableTemplate';
-import nocomplainsImg from '../../../nocomplains.jpg';
+import {nocomplains} from '../../../nocomplains.jpg';
 
 const SeeComplains = () => {
   const dispatch = useDispatch();
@@ -42,7 +42,7 @@ const SeeComplains = () => {
       ) : response ? (
         <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
           <div>
-            <img src={nocomplainsImg} alt="No complains" />
+            <img src={nocomplains} alt="No complains" />
             No Complains Right Now
           </div>
         </Box>
