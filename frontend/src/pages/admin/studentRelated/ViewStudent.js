@@ -102,9 +102,6 @@ const ViewStudent = () => {
     }
 
     const deleteHandler = () => {
-        // setMessage("Sorry the delete function has been disabled for now.")
-        // setShowPopup(true)
-
         dispatch(deleteUser(studentID, address))
             .then(() => {
                 navigate(-1)
@@ -341,58 +338,26 @@ const ViewStudent = () => {
 
     const StudentDetailsSection = () => {
         return (
-            <div>
-                Name: {userDetails.name}
-                <br />
-                Roll Number: {userDetails.rollNum}
-                <br />
-                Class: {sclassName.sclassName}
-                <br />
-                School: {studentSchool.schoolName}
-                {
-                    subjectAttendance && Array.isArray(subjectAttendance) && subjectAttendance.length > 0 && (
-                        <CustomPieChart data={chartData} />
-                    )
-                }
-                <Button variant="contained" sx={styles.styledButton} onClick={deleteHandler}>
-                    Delete
-                </Button>
-                <br />
-                {/* <Button variant="contained" sx={styles.styledButton} className="show-tab" onClick={() => { setShowTab(!showTab) }}>
+            <Paper elevation={3} sx={{ padding: '20px', backgroundColor: '#fff', marginTop: '20px' }}>
+                <div>
+                    Name: {userDetails.name}
+                    <br />
+                    Roll Number: {userDetails.rollNum}
+                    <br />
+                    Class: {sclassName.sclassName}
+                    <br />
+                    School: {studentSchool.schoolName}
                     {
-                        showTab
-                            ? <KeyboardArrowUp />
-                            : <KeyboardArrowDown />
+                        subjectAttendance && Array.isArray(subjectAttendance) && subjectAttendance.length > 0 && (
+                            <CustomPieChart data={chartData} />
+                        )
                     }
-                    Edit Student
-                </Button>
-                <Collapse in={showTab} timeout="auto" unmountOnExit>
-                    <div className="register">
-                        <form className="registerForm" onSubmit={submitHandler}>
-                            <span className="registerTitle">Edit Details</span>
-                            <label>Name</label>
-                            <input className="registerInput" type="text" placeholder="Enter user's name..."
-                                value={name}
-                                onChange={(event) => setName(event.target.value)}
-                                autoComplete="name" required />
-
-                            <label>Roll Number</label>
-                            <input className="registerInput" type="number" placeholder="Enter user's Roll Number..."
-                                value={rollNum}
-                                onChange={(event) => setRollNum(event.target.value)}
-                                required />
-
-                            <label>Password</label>
-                            <input className="registerInput" type="password" placeholder="Enter user's password..."
-                                value={password}
-                                onChange={(event) => setPassword(event.target.value)}
-                                autoComplete="new-password" />
-
-                            <button className="registerButton" type="submit" >Update</button>
-                        </form>
-                    </div>
-                </Collapse> */}
-            </div>
+                    <Button variant="contained" sx={styles.styledButton} onClick={deleteHandler}>
+                        Delete
+                    </Button>
+                    <br />
+                </div>
+            </Paper>
         )
     }
 
