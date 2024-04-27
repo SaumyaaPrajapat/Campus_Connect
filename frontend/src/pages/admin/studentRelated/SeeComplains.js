@@ -42,7 +42,7 @@ const SeeComplains = () => {
       ) : response ? (
         <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
           <div>
-            // <img src={nocomplains} alt="No complains" />
+         
             No Complains Right Now
           </div>
         </Box>
