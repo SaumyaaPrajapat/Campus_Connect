@@ -5,6 +5,7 @@ import {
 } from '@mui/material';
 import { getAllComplains } from '../../../redux/complainRelated/complainHandle';
 import TableTemplate from '../../../components/TableTemplate';
+import {nocomplains} from '../../../nocomplains.jpg';
 
 const SeeComplains = () => {
 
@@ -52,9 +53,13 @@ const SeeComplains = () => {
         :
         <>
           {response ?
-            <Box sx={{ display: 'flex', justifyContent: 'flex-end', marginTop: '16px' }}>
-              No Complains Right Now
-            </Box>
+          <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+    <div>
+        <img src={nocomplains} alt="No complains" />
+        No Complains Right Now
+    </div>
+</Box>
+
             :
             <Paper sx={{ width: '100%', overflow: 'hidden' }}>
               {Array.isArray(complainsList) && complainsList.length > 0 &&
