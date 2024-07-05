@@ -7,6 +7,8 @@ Streamline school management, class organization, and add students and teachers.
 Seamlessly track attendance, assess performance, and provide feedback. <br>
 Access records, view marks, and communicate effortlessly.
 </h3>
+<img width="958" alt="CampusConnect" src="https://github.com/SaumyaaPrajapat/Campus_Connect/assets/103128269/6c99d8ed-922d-4f67-b0c3-e56904bbb647">
+
 
 <br>
 
