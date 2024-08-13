@@ -28,7 +28,6 @@ The School Management System is a web-based application built using the MERN (Mo
 
 - **Data Visualization:** Students can visualize their performance data through interactive charts and tables, helping them understand their academic performance at a glance.
 
-- **Communication:** Users can communicate effortlessly through the system. Teachers can send messages to students and vice versa, promoting effective communication and collaboration.
 
 ## Technologies Used
 
